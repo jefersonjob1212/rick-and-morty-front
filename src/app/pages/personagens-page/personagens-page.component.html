@@ -1,1 +1,60 @@
-<p>personagens-page works!</p>
+<h1>Lista de personagens</h1>
+
+<!-- <label>Pesquisar por nome</label>
+<input type="text" [(ngModel)]="nome" (keyup.enter)="filtrar()">
+<label>Gênero</label>
+<select [(ngModel)]="genero" (change)="filtrar()">
+    <option value="">Selecione</option>
+    <option value="male">Masculino</option>
+    <option value="female">Feminino</option>
+    <option value="genderless">Sem gênero</option>
+    <option value="unknow">Desconhecido</option>
+</select>
+<label>Status</label>
+<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="alive"> Vivo
+<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="dead"> Morto
+<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="unknow"> Desconhecido -->
+<form [formGroup]="filter" (submit)="filtrar()">
+    <label>Pesquisar por nome</label>
+    <input type="text" formControlName="nome">
+    <label>Gênero</label>
+    <select formControlName="genero">
+        <option value="">Selecione</option>
+        <option value="male">Masculino</option>
+        <option value="female">Feminino</option>
+        <option value="genderless">Sem gênero</option>
+        <option value="unknow">Desconhecido</option>
+    </select>
+    <label>Status</label>
+    <input type="radio" formControlName="status" value="alive"> Vivo
+    <input type="radio" formControlName="status" value="dead"> Morto
+    <input type="radio" formControlName="status" value="unknow"> Desconhecido
+
+    <button mat-flat-button color="primary" type="submit">Pesquisar</button>
+    <button mat-flat-button color="accent" (click)="filter.reset()">Limpar</button>
+</form>
+<br>
+<br>
+<button (click)="firstPage()" [disabled]="!prev">First</button>
+<button (click)="prevPage()" [disabled]="!prev">Prev</button>
+<button (click)="nextPage()" [disabled]="!next">Next</button>
+<button (click)="lastPage()" [disabled]="!next">Last</button>
+<table *ngIf="existeRegistro">
+    <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Espécie</th>
+        <th>Gênero</th>
+        <th>Origem</th>
+    </tr>
+    <tr *ngFor="let personagem of personagens">
+        <td>{{ personagem.name }}</td>
+        <td>{{ personagem.type }}</td>
+        <td>{{ personagem.status }}</td>
+        <td>{{ personagem.species }}</td>
+        <td>{{ personagem.gender }}</td>
+        <td>{{ personagem.location.name }}</td>
+    </tr>
+</table>
+<h3 *ngIf="!existeRegistro">Nenhum registro encontrado.</h3>
