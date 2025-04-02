@@ -1,44 +1,46 @@
 <h1>Lista de personagens</h1>
+<form [formGroup]="filter" class="form-filtro" (submit)="filtrar()">
+    <mat-form-field class="small" appearance="outline">
+        <mat-label>Pesquisar por nome</mat-label>
+        <input matInput type="text" formControlName="nome" style="height: 20px !important;">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Gênero</mat-label>
+        <mat-select formControlName="genero">
+            <mat-option value="">Selecione</mat-option>
+            <mat-option value="male">Masculino</mat-option>
+            <mat-option value="female">Feminino</mat-option>
+            <mat-option value="genderless">Sem gênero</mat-option>
+            <mat-option value="unknow">Desconhecido</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-radio-group formControlName="status">
+        <label>Status</label>
+        <mat-radio-button value="alive">Vivo</mat-radio-button>
+        <mat-radio-button value="dead">Morto</mat-radio-button>
+        <mat-radio-button value="unknow">Desconhecido</mat-radio-button>
+    </mat-radio-group>
 
-<!-- <label>Pesquisar por nome</label>
-<input type="text" [(ngModel)]="nome" (keyup.enter)="filtrar()">
-<label>Gênero</label>
-<select [(ngModel)]="genero" (change)="filtrar()">
-    <option value="">Selecione</option>
-    <option value="male">Masculino</option>
-    <option value="female">Feminino</option>
-    <option value="genderless">Sem gênero</option>
-    <option value="unknow">Desconhecido</option>
-</select>
-<label>Status</label>
-<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="alive"> Vivo
-<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="dead"> Morto
-<input type="radio" [(ngModel)]="status" (change)="filtrar()" name="status" value="unknow"> Desconhecido -->
-<form [formGroup]="filter" (submit)="filtrar()">
-    <label>Pesquisar por nome</label>
-    <input type="text" formControlName="nome">
-    <label>Gênero</label>
-    <select formControlName="genero">
-        <option value="">Selecione</option>
-        <option value="male">Masculino</option>
-        <option value="female">Feminino</option>
-        <option value="genderless">Sem gênero</option>
-        <option value="unknow">Desconhecido</option>
-    </select>
-    <label>Status</label>
-    <input type="radio" formControlName="status" value="alive"> Vivo
-    <input type="radio" formControlName="status" value="dead"> Morto
-    <input type="radio" formControlName="status" value="unknow"> Desconhecido
-
-    <button mat-flat-button color="primary" type="submit">Pesquisar</button>
-    <button mat-flat-button color="accent" (click)="filter.reset()">Limpar</button>
+    <div class="buttons">
+        <button mat-flat-button color="primary" type="submit">Pesquisar</button>
+        <button mat-flat-button color="accent" (click)="filter.reset()">Limpar</button>
+    </div>
 </form>
 <br>
 <br>
-<button (click)="firstPage()" [disabled]="!prev">First</button>
-<button (click)="prevPage()" [disabled]="!prev">Prev</button>
-<button (click)="nextPage()" [disabled]="!next">Next</button>
-<button (click)="lastPage()" [disabled]="!next">Last</button>
+<div class="pagination">
+    <button mat-mini-fab color="primary" (click)="firstPage()" [disabled]="!prev">
+        <mat-icon>first_page</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="prevPage()" [disabled]="!prev">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="nextPage()" [disabled]="!next">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="lastPage()" [disabled]="!next">
+        <mat-icon>last_page</mat-icon></button>
+</div>
 <table *ngIf="existeRegistro">
     <tr>
         <th>Nome</th>

@@ -30,7 +30,7 @@ export class PersonagensPageComponent implements OnInit {
   ngOnInit(): void {
     this.filter = this.formBuilder.group({
       nome: [''],
-      genero: [''],
+      genero: [""],
       status: ['']
     });
 

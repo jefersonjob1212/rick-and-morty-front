@@ -1,3 +1,35 @@
 label {
     padding-right: 15px;
 }
+
+.form-filtro {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-filtro > mat-form-field {
+    margin-right: 20px;
+    height: 20px;
+}
+
+.form-filtro > mat-form-field > input {
+    margin-right: 20px;
+    height: 20px;
+}
+
+.buttons {
+    margin-left: 20px;
+}
+
+.buttons > button {
+    margin-right: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.pagination > button {
+    margin-right: 20px;
+}
