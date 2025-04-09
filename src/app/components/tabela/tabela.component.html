@@ -1,0 +1,39 @@
+<div class="pagination">
+    <button mat-mini-fab color="primary" (click)="firstPage()" [disabled]="!prev">
+        <mat-icon>first_page</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="prevPage()" [disabled]="!prev">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="nextPage()" [disabled]="!next">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" (click)="lastPage()" [disabled]="!next">
+        <mat-icon>last_page</mat-icon>
+    </button>
+</div>
+<table *ngIf="existeRegistro">
+    <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Espécie</th>
+        <th>Gênero</th>
+        <th>Origem</th>
+        <th>Ações</th>
+    </tr>
+    <tr *ngFor="let personagem of personagens">
+        <td>{{ personagem.name }}</td>
+        <td>{{ personagem.type }}</td>
+        <td>{{ personagem.status }}</td>
+        <td>{{ personagem.species }}</td>
+        <td>{{ personagem.gender }}</td>
+        <td>{{ personagem.location.name }}</td>
+        <td>
+            <button mat-icon-button (click)="visualizarPersonagem(personagem)">
+                <mat-icon>pageview</mat-icon>
+            </button>
+        </td>
+    </tr>
+</table>
+<h3 *ngIf="!existeRegistro">Nenhum registro encontrado.</h3>

@@ -14,6 +14,10 @@ export class PersonagemService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getById(id: number): Observable<Personagem> {
+    return this.httpClient.get<Personagem>(this.urlBase + id);
+  }
+
   getAll(page?: number): Observable<Result> {
     let url: string = this.urlBase;
     if(page) {

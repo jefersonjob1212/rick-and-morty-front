@@ -14,12 +14,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { TabelaComponent } from './components/tabela/tabela.component';
+import { PersonagensDetalheComponent } from './pages/personagens-detalhe/personagens-detalhe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    PersonagensPageComponent
+    PersonagensPageComponent,
+    TabelaComponent,
+    PersonagensDetalheComponent
   ],
   imports: [
     BrowserModule,
